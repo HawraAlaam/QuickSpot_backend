@@ -4,10 +4,12 @@ const cors = require('cors')
 
 
 
+
 const PORT = process.env.PORT || 3000
 
 const AuthRouter = require("./routes/auth")
 const placeRouter = require("./routes/placeRoute")
+const jobRouter = require ("./routes/jobRouter.js")
 
 const db = require("./db")
 
@@ -18,6 +20,8 @@ app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+
+app.use('/jobs', jobRouter)
 app.use("/place", placeRouter)
 app.use('/auth', AuthRouter)
 
