@@ -1,7 +1,8 @@
 const express = require('express')
-const morhan = require('morgan')
+const morgan = require('morgan')
 const cors = require('cors')
 
+const AuthRouter = require("./routes/auth")
 
 const PORT = process.env.PORT || 3000
 
@@ -14,6 +15,7 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+app.use('/auth', AuthRouter)
 
 
 app.use('/', (req, res) => {
