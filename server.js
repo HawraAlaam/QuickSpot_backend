@@ -2,11 +2,11 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 
-const AuthRouter = require("./routes/auth")
 
 
 const PORT = process.env.PORT || 3000
 
+const AuthRouter = require("./routes/auth")
 const placeRouter = require("./routes/placeRoute")
 
 const db = require("./db")
