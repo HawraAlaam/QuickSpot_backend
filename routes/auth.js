@@ -4,5 +4,10 @@ const middleware = require("../middleware")
 
 router.post("/register", controller.Register)
 router.post("/login", controller.Login)
-
+router.put(
+  "/update/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.UpdatePassword
+)
 module.exports = router

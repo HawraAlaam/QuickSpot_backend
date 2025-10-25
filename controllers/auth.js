@@ -51,6 +51,40 @@ const Login = async (req, res) => {
   }
 }
 
+const UpdatePassword = async (req, res) => {
+  try {
+    // Extracts the necessary fields from the request body
+    const { oldPassword, newPassword } = req.body
+    // Finds a user by a particular field (in this case, the user's id from the URL param)
+    let user = await User.findById(req.params.id)
+    // Checks if the password matches the stored digest
+    let matched = await middleware.comparePassword(
+      oldPassword,
+      user.passwordDigest
+    )
+    // If they match, hashes the new password, updates the db with the new digest, then sends the user as a response
+    if (matched) {
+      let passwordDigest = await middleware.hashPassword(newPassword)
+      user = await User.findByIdAndUpdate(req.params.id, {
+        passwordDigest
+      })
+      let payload = {
+        id: user._id,
+        name: user.name,
+        email: user.email
+      }
+      return res.status(200).send({ status: 'Password Updated!', user: payload })
+    }
+    res.status(401).send({ status: 'Error', msg: 'Old Password did not match!' })
+  } catch (error) {
+    console.log(error)
+    res.status(401).send({
+      status: 'Error',
+      msg: 'An error has occurred updating password!'
+    })
+  }
+}
+
 module.exports = {
   Register,
   Login,
