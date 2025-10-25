@@ -1,6 +1,7 @@
 const express = require('express')
-const morhan = require('morgan')
+const morgan = require('morgan')
 const cors = require('cors')
+
 
 
 const PORT = process.env.PORT || 3000
@@ -14,7 +15,8 @@ app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-
+const jobRouter = require ("./routes/jobRouter.js")
+app.use('/jobs', jobRouter)
 
 app.use('/', (req, res) => {
   res.send(`Connected!`)
