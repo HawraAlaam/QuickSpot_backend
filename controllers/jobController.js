@@ -1,9 +1,7 @@
 const Job = require("../models/job")
 
-
 const GetJobs = async (req, res) => {
   try {
-
     const jobs = await Job.find({})
     res.status(200).send(jobs)
   } catch (error) {
@@ -17,7 +15,6 @@ const GetJobById = async (req, res) => {
     const job = await Job.findById(req.params.id)
 
     if (!job) {
-
       return res.status(404).send("Job not found")
     }
 
@@ -29,11 +26,9 @@ const GetJobById = async (req, res) => {
   }
 }
 
-
 const CreateJob = async (req, res) => {
   try {
-
-    const newJob = await Job.create({...req.body})
+    const newJob = await Job.create({ ...req.body })
     res.status(201).send(newJob)
   } catch (error) {
     console.error("Error creating job:", error)
@@ -42,14 +37,11 @@ const CreateJob = async (req, res) => {
   }
 }
 
-
 const UpdateJob = async (req, res) => {
   try {
-    const updatedJob = await Job.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    )
+    const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    })
 
     if (!updatedJob) {
       return res.status(404).send("Job not found for update")
@@ -64,7 +56,7 @@ const UpdateJob = async (req, res) => {
 
 const DeleteJob = async (req, res) => {
   try {
-        const result = await Job.deleteOne({ _id: req.params.id })
+    const result = await Job.deleteOne({ _id: req.params.id })
 
     if (result.deletedCount === 0) {
       return res.status(404).send("Job not found for deletion")
@@ -72,7 +64,7 @@ const DeleteJob = async (req, res) => {
 
     res.status(200).send({
       msg: "Job Deleted Successfully",
-      id: req.params.id
+      id: req.params.id,
     })
   } catch (error) {
     console.error("Error deleting job:", error)

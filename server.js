@@ -2,9 +2,6 @@ const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
 
-
-
-
 const PORT = process.env.PORT || 3000
 
 const AuthRouter = require("./routes/auth")
