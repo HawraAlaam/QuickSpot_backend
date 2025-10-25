@@ -1,4 +1,4 @@
-const Booking = require("../controllers/bookingController")
+const Booking = require("../models/Booking")
 
 const GetBookings = async (req, res) => {
   try {
