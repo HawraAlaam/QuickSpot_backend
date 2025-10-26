@@ -48,8 +48,11 @@ const Login = async (req, res) => {
     if (matched) {
       let payload = {
         id: user._id,
-        name: `${user.firstName} ${user.lastName}`,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
+        mobileNumber: user.mobileNumber,
+        bio: user.bio,
       }
       // Creates our JWT and packages it with our payload to send as a response
       let token = middleware.createToken(payload)
@@ -83,8 +86,11 @@ const UpdatePassword = async (req, res) => {
       })
       let payload = {
         id: user._id,
-        name: `${user.firstName} ${user.lastName}`,
+        firstName: user.firstName,
+        lastName: user.lastName,
         email: user.email,
+        mobileNumber: user.mobileNumber,
+        bio: user.bio,
       }
       return res
         .status(200)

@@ -9,7 +9,7 @@ router.get(
   userCtrl.GetUser
 )
 router.put(
-  "/:id",
+  "/edit/:id",
   middleware.stripToken,
   middleware.verifyToken,
   userCtrl.UpdateProfile
