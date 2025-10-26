@@ -1,12 +1,13 @@
-const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
+const express = require("express")
+const morgan = require("morgan")
+const cors = require("cors")
 
 const PORT = process.env.PORT || 3000
 
 const AuthRouter = require("./routes/auth")
 const placeRouter = require("./routes/placeRoute")
-const jobRouter = require ("./routes/jobRouter.js")
+const jobRouter = require("./routes/jobRouter.js")
+const bookingRouter = require("./routes/bookingRouter")
 
 const db = require("./db")
 
@@ -17,10 +18,10 @@ app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-
-app.use('/jobs', jobRouter)
+app.use("/jobs", jobRouter)
 app.use("/place", placeRouter)
-app.use('/auth', AuthRouter)
+app.use("/auth", AuthRouter)
+app.use("/bookings", bookingRouter)
 
 app.use("/", (req, res) => {
   res.send(`Connected!`)

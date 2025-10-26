@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema(
     passwordDigest: { type: String, required: true },
     image: { type: String, required: false },
     bio: { type: String, required: false },
+    mobileNumber: { type: String, required: true },
   },
   { timestamps: true }
 )

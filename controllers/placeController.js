@@ -5,7 +5,11 @@ const GetPlaces = async (req, res) => {
     const places = await Place.find({})
     res.send(places)
   } catch (error) {
-    throw error
+    console.log(error)
+    res.status(401).send({
+      status: "Error",
+      msg: "An error has occurred while getting the places!",
+    })
   }
 }
 
@@ -14,7 +18,11 @@ const GetPlaceId = async (req, res) => {
     const place = await Place.findById(req.params.placeId)
     res.send(place)
   } catch (error) {
-    throw error
+    console.log(error)
+    res.status(401).send({
+      status: "Error",
+      msg: "An error has occurred while getting the place!",
+    })
   }
 }
 
@@ -23,7 +31,11 @@ const CreatePlace = async (req, res) => {
     const place = await Place.create({ ...req.body })
     res.send(place)
   } catch (error) {
-    throw error
+    console.log(error)
+    res.status(401).send({
+      status: "Error",
+      msg: "An error has occurred while creating the place!",
+    })
   }
 }
 
@@ -34,7 +46,11 @@ const UpdatePlace = async (req, res) => {
     })
     res.send(place)
   } catch (error) {
-    throw error
+    console.log(error)
+    res.status(401).send({
+      status: "Error",
+      msg: "An error has occurred while updating the place!",
+    })
   }
 }
 
@@ -47,7 +63,11 @@ const DeletePlace = async (req, res) => {
       status: "Ok",
     })
   } catch (error) {
-    throw error
+    console.log(error)
+    res.status(401).send({
+      status: "Error",
+      msg: "An error has occurred while deleting the place!",
+    })
   }
 }
 
