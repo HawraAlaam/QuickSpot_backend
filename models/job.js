@@ -4,11 +4,12 @@ const { Schema } = require('mongoose')
 const jobSchema = new Schema(
   {
     title: { type: String, required: true },
-    time: { type: String },
-    date: { type: String },
-    price: { type: Number },
-    location: { type: String },
-    description: { type: String },
+    date: { type: String, required: true },
+    from: { type: String, required: true },
+    to: { type: String, required: true },
+    salary: { type: Number, required: true },
+    location: { type: String, required: true },
+    description: { type: String, required: true},
     owner: { type: Schema.Types.ObjectId, ref: 'User' }
   },
   { timestamps: true }
