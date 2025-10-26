@@ -8,6 +8,7 @@ const AuthRouter = require("./routes/auth")
 const placeRouter = require("./routes/placeRoute")
 const jobRouter = require("./routes/jobRouter.js")
 const bookingRouter = require("./routes/bookingRouter")
+const userRouter = require("./routes/userRouter")
 
 const db = require("./db")
 
@@ -22,6 +23,7 @@ app.use("/jobs", jobRouter)
 app.use("/place", placeRouter)
 app.use("/auth", AuthRouter)
 app.use("/bookings", bookingRouter)
+app.use("profile", userRouter)
 
 app.use("/", (req, res) => {
   res.send(`Connected!`)
