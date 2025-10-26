@@ -1,15 +1,35 @@
 const router = require("express").Router()
-
+const middleware = require("../middleware")
 const controller = require("../controllers/jobController")
 
 router.get("/", controller.GetJobs)
 
-router.get("/:id", controller.GetJobById)
+router.get(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetJobById
+)
 
-router.post("/", controller.CreateJob)
+router.post(
+  "/",
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.CreateJob
+)
 
-router.put("/:id", controller.UpdateJob)
+router.put(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.UpdateJob
+)
 
-router.delete("/:id", controller.DeleteJob)
+router.delete(
+  "/:id",
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.DeleteJob
+)
 
 module.exports = router
