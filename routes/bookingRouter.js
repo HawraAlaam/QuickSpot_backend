@@ -1,10 +1,30 @@
 const router = require("express").Router()
-
+const middleware = require("../middleware")
 const bookingCtrl = require("../controllers/bookingController")
 
-router.get("/", bookingCtrl.GetBookings)
-router.post("/", bookingCtrl.CreateBooking)
-router.put("/:bookingId", bookingCtrl.UpdateBooking)
-router.delete("/:bookingId", bookingCtrl.DeleteBooking)
+router.get(
+  "/",
+  middleware.stripToken,
+  middleware.verifyToken,
+  bookingCtrl.GetBookings
+)
+router.post(
+  "/",
+  middleware.stripToken,
+  middleware.verifyToken,
+  bookingCtrl.CreateBooking
+)
+router.put(
+  "/:bookingId",
+  middleware.stripToken,
+  middleware.verifyToken,
+  bookingCtrl.UpdateBooking
+)
+router.delete(
+  "/:bookingId",
+  middleware.stripToken,
+  middleware.verifyToken,
+  bookingCtrl.DeleteBooking
+)
 
 module.exports = router
