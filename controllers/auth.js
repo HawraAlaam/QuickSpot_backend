@@ -4,7 +4,8 @@ const middleware = require("../middleware")
 const Register = async (req, res) => {
   try {
     // Extracts the necessary fields from the request body
-    const { firstName, lastName, email, password, image, bio, mobileNumber } = req.body
+    const { firstName, lastName, email, password, image, bio, mobileNumber } =
+      req.body
     // Hashes the provided password
     let passwordDigest = await middleware.hashPassword(password)
     // Checks if there has already been a user registered with that email
@@ -22,7 +23,7 @@ const Register = async (req, res) => {
         passwordDigest,
         image,
         bio,
-        mobileNumber
+        mobileNumber,
       })
       // Sends the user as a response
       res.status(200).send(user)
@@ -82,7 +83,7 @@ const UpdatePassword = async (req, res) => {
       })
       let payload = {
         id: user._id,
-        name:`${user.firstName} ${user.lastName}`,
+        name: `${user.firstName} ${user.lastName}`,
         email: user.email,
       }
       return res
