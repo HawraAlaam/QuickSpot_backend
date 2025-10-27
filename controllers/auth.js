@@ -113,9 +113,18 @@ const CheckSession = async (req, res) => {
   res.status(200).send(payload)
 }
 
+const userPicture = async (req, res) => {
+  if (req.file) {
+    req.body.picture = `/uploads/${req.file.filename}`
+  }
+  await User.findByIdAndUpdate(req.params.userId, req.body)
+  req.session.user.picture = req.body.picture
+}
+
 module.exports = {
   Register,
   Login,
   UpdatePassword,
   CheckSession,
+  userPicture
 }
