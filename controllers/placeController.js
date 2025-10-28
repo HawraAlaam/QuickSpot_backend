@@ -28,6 +28,10 @@ const GetPlaceId = async (req, res) => {
 
 const CreatePlace = async (req, res) => {
   try {
+    ///Adding pictures
+    if (req.file) {
+    req.body.picture = `/uploads/${req.file.filename}`
+  }
     const place = await Place.create({ ...req.body })
     res.send(place)
   } catch (error) {
@@ -71,10 +75,19 @@ const DeletePlace = async (req, res) => {
   }
 }
 
+// addiing pictures
+const placePictures = async (req, res) => {
+  if (req.file) {
+    req.body.picture = `/uploads/${req.file.filename}`
+  }
+  await User.findByIdAndUpdate(req.params.userId, req.body)
+}
+
 module.exports = {
   GetPlaces,
   GetPlaceId,
   CreatePlace,
   UpdatePlace,
   DeletePlace,
+  placePictures,
 }
