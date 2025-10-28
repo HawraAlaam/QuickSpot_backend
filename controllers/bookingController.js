@@ -13,6 +13,19 @@ const GetBookings = async (req, res) => {
   }
 }
 
+const GetBookingById = async (req, res) => {
+  try {
+    const booking = await Booking.findById(req.params.bookingId)
+    res.send(booking)
+  } catch (error) {
+    console.log(error)
+    res.status(401).send({
+      status: "Error",
+      msg: "An error has occurred while getting the booking!",
+    })
+  }
+}
+
 const CreateBooking = async (req, res) => {
   try {
     const booking = await Booking.create({ ...req.body })
@@ -64,6 +77,7 @@ const DeleteBooking = async (req, res) => {
 
 module.exports = {
   GetBookings,
+  GetBookingById,
   CreateBooking,
   UpdateBooking,
   DeleteBooking,

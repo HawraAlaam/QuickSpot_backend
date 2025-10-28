@@ -1,8 +1,6 @@
 const router = require("express").Router()
 const middleware = require("../middleware")
 const userCtrl = require("../controllers/userController")
-const upload = require('../middleware/upload')
-
 
 router.get(
   "/:id",

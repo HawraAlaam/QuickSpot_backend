@@ -8,6 +8,13 @@ router.get(
   middleware.verifyToken,
   bookingCtrl.GetBookings
 )
+
+router.get(
+  "/:bookingId",
+  middleware.stripToken,
+  middleware.verifyToken,
+  bookingCtrl.GetBookingById
+)
 router.post(
   "/",
   middleware.stripToken,
