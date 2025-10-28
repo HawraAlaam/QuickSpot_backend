@@ -3,7 +3,6 @@ const middleware = require("../middleware")
 const userCtrl = require("../controllers/userController")
 const upload = require("../middleware/upload")
 
-
 router.get(
   "/:id",
   middleware.stripToken,
@@ -14,7 +13,7 @@ router.put(
   "/edit/:id",
   middleware.stripToken,
   middleware.verifyToken,
-  upload.single("picture"),
+  upload.single("image"),
   userCtrl.UpdateProfile
 )
 

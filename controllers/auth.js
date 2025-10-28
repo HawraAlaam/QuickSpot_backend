@@ -4,8 +4,7 @@ const middleware = require("../middleware")
 const Register = async (req, res) => {
   try {
     // Extracts the necessary fields from the request body
-    const { firstName, lastName, email, password, image, bio, mobileNumber } =
-      req.body
+    const { firstName, lastName, email, password, bio, mobileNumber } = req.body
     // Hashes the provided password
     let passwordDigest = await middleware.hashPassword(password)
     // Checks if there has already been a user registered with that email
@@ -17,8 +16,9 @@ const Register = async (req, res) => {
     } else {
       // Creates a new user
       if (req.file) {
-        req.body.images = `/uploads/${req.file.filename}`
+        req.body.image = `/uploads/${req.file.filename}`
       }
+      const { image } = req.body
       const user = await User.create({
         firstName,
         lastName,

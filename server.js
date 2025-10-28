@@ -13,7 +13,6 @@ const userRouter = require("./routes/userRouter")
 const db = require("./db")
 
 const path = require("path")
-const upload = require("./middleware/upload")
 
 const app = express()
 app.use(express.static(path.join(__dirname, "public")))
