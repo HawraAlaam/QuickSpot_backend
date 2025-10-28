@@ -29,10 +29,13 @@ const GetPlaceId = async (req, res) => {
 const CreatePlace = async (req, res) => {
   try {
     //Adding pictures
-    if (req.file) {
-      req.body.images = `/uploads/${req.file.filename}`
+    let placeImages = []
+
+    if (req.files) {
+      placeImages = req.files.map((file) => `/uploads/${file.filename}`)
     }
-    const place = await Place.create({ ...req.body })
+
+    const place = await Place.create({ ...req.body, images: placeImages })
     res.send(place)
   } catch (error) {
     console.log(error)
