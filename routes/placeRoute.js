@@ -3,7 +3,6 @@ const middleware = require("../middleware")
 const placeCtrl = require("../controllers/placeController")
 const upload = require("../middleware/upload")
 
-
 router.get("/", placeCtrl.GetPlaces)
 router.get(
   "/:placeId",
@@ -15,14 +14,14 @@ router.post(
   "/",
   middleware.stripToken,
   middleware.verifyToken,
-  upload.array("images", 6),
+  upload.array("images"),
   placeCtrl.CreatePlace
 )
 router.put(
   "/:placeId",
   middleware.stripToken,
   middleware.verifyToken,
-   upload.array("images", 6),
+  upload.array("images"),
   placeCtrl.UpdatePlace
 )
 router.delete(
