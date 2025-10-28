@@ -1,11 +1,9 @@
 const router = require("express").Router()
 const middleware = require("../middleware")
 const placeCtrl = require("../controllers/placeController")
-const upload = require('../middleware/upload')
+const upload = require("../middleware/upload")
 
 
-
-router.post('/:placeId/images', upload.array("images", 6),placeCtrl.placePictures)
 router.get("/", placeCtrl.GetPlaces)
 router.get(
   "/:placeId",
@@ -17,12 +15,14 @@ router.post(
   "/",
   middleware.stripToken,
   middleware.verifyToken,
+  upload.array("images", 6),
   placeCtrl.CreatePlace
 )
 router.put(
   "/:placeId",
   middleware.stripToken,
   middleware.verifyToken,
+   upload.array("images", 6),
   placeCtrl.UpdatePlace
 )
 router.delete(

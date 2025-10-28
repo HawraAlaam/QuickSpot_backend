@@ -16,6 +16,9 @@ const Register = async (req, res) => {
         .send("A user with that email has already been registered!")
     } else {
       // Creates a new user
+      if (req.file) {
+        req.body.images = `/uploads/${req.file.filename}`
+      }
       const user = await User.create({
         firstName,
         lastName,
@@ -113,18 +116,9 @@ const CheckSession = async (req, res) => {
   res.status(200).send(payload)
 }
 
-const userPicture = async (req, res) => {
-  if (req.file) {
-    req.body.picture = `/uploads/${req.file.filename}`
-  }
-  await User.findByIdAndUpdate(req.params.userId, req.body)
-  req.session.user.picture = req.body.picture
-}
-
 module.exports = {
   Register,
   Login,
   UpdatePassword,
   CheckSession,
-  userPicture
 }
