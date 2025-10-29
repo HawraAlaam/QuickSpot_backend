@@ -15,7 +15,10 @@ const GetUser = async (req, res) => {
 
 const UpdateProfile = async (req, res) => {
   try {
-    const user = await Place.findByIdAndUpdate(req.params.id, req.body, {
+    if (req.file) {
+      req.body.image = `/uploads/${req.file.filename}`
+    }
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     })
     res.send(user)
