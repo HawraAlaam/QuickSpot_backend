@@ -25,7 +25,7 @@ const Register = async (req, res) => {
         email,
         passwordDigest,
         image,
-        bio,
+        bio: "",
         mobileNumber,
       })
       // Sends the user as a response
