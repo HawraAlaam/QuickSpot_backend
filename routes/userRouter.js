@@ -1,8 +1,7 @@
 const router = require("express").Router()
 const middleware = require("../middleware")
 const userCtrl = require("../controllers/userController")
-const upload = require('../middleware/upload')
-
+const upload = require("../middleware/upload")
 
 router.get(
   "/:id",
@@ -14,6 +13,7 @@ router.put(
   "/edit/:id",
   middleware.stripToken,
   middleware.verifyToken,
+  upload.single("image"),
   userCtrl.UpdateProfile
 )
 

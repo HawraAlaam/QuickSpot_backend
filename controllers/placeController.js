@@ -15,7 +15,7 @@ const GetPlaces = async (req, res) => {
 
 const GetPlaceId = async (req, res) => {
   try {
-    const place = await Place.findById(req.params.placeId)
+    const place = await Place.findById(req.params.placeId).populate("owner")
     res.send(place)
   } catch (error) {
     console.log(error)
@@ -28,11 +28,14 @@ const GetPlaceId = async (req, res) => {
 
 const CreatePlace = async (req, res) => {
   try {
-    ///Adding pictures
-    if (req.file) {
-    req.body.picture = `/uploads/${req.file.filename}`
-  }
-    const place = await Place.create({ ...req.body })
+    //Adding pictures
+    let placeImages = []
+
+    if (req.files) {
+      placeImages = req.files.map((file) => `/uploads/${file.filename}`)
+    }
+
+    const place = await Place.create({ ...req.body, images: placeImages })
     res.send(place)
   } catch (error) {
     console.log(error)
@@ -45,6 +48,9 @@ const CreatePlace = async (req, res) => {
 
 const UpdatePlace = async (req, res) => {
   try {
+    if (req.file) {
+      req.body.images = `/uploads/${req.file.filename}`
+    }
     const place = await Place.findByIdAndUpdate(req.params.placeId, req.body, {
       new: true,
     })
@@ -75,19 +81,10 @@ const DeletePlace = async (req, res) => {
   }
 }
 
-// addiing pictures
-const placePictures = async (req, res) => {
-  if (req.file) {
-    req.body.picture = `/uploads/${req.file.filename}`
-  }
-  await User.findByIdAndUpdate(req.params.userId, req.body)
-}
-
 module.exports = {
   GetPlaces,
   GetPlaceId,
   CreatePlace,
   UpdatePlace,
   DeletePlace,
-  placePictures,
 }
