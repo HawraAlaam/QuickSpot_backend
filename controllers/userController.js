@@ -3,8 +3,6 @@ const User = require("../models/User")
 const GetUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id)
-    console.log(user)
-
     res.send(user)
   } catch (error) {
     console.log(error)
@@ -18,10 +16,9 @@ const GetUser = async (req, res) => {
 const UpdateProfile = async (req, res) => {
   try {
     if (req.file) {
-        req.body.image = `/uploads/${req.file.filename}`
-      }
-      const { image } = req.body
-    const user = await User.findByIdAndUpdate(req.params.id, req.body, image,{
+      req.body.image = `/uploads/${req.file.filename}`
+    }
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     })
     res.send(user)
