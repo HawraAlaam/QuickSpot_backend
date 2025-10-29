@@ -17,6 +17,9 @@ const GetUser = async (req, res) => {
 
 const UpdateProfile = async (req, res) => {
   try {
+    if (req.file) {
+      req.body.image = `/uploads/${req.file.filename}`
+    }
     const user = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     })
