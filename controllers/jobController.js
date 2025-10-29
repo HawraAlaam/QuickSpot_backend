@@ -12,7 +12,7 @@ const GetJobs = async (req, res) => {
 
 const GetJobById = async (req, res) => {
   try {
-    const job = await Job.findById(req.params.id)
+    const job = await Job.findById(req.params.id).populate("owner")
 
     if (!job) {
       return res.status(404).send("Job not found")

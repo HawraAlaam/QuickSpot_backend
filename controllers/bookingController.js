@@ -2,7 +2,7 @@ const Booking = require("../models/Booking")
 
 const GetBookings = async (req, res) => {
   try {
-    const bookings = await Booking.find({})
+    const bookings = await Booking.find({}).populate("owner")
     res.send(bookings)
   } catch (error) {
     console.log(error)

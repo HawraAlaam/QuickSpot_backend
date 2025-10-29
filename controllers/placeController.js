@@ -15,7 +15,7 @@ const GetPlaces = async (req, res) => {
 
 const GetPlaceId = async (req, res) => {
   try {
-    const place = await Place.findById(req.params.placeId)
+    const place = await Place.findById(req.params.placeId).populate("owner")
     res.send(place)
   } catch (error) {
     console.log(error)
