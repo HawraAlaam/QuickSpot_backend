@@ -58,16 +58,32 @@ QuickSpot is the fast-track platform for Bahrainis who need immediate, short-ter
 ---
 ### Wireframe
 
-#### ![image](./images/page1.png)
-#### ![image](./images/page2.png)
-#### ![image](./images/page3.png)
-#### ![image](./images/page4.png)
-#### ![image](./images/page5.png)
-#### ![image](./images/page6.png)
-#### ![image](./images/page7.png)
-#### ![image](./images/page8.png)
-#### ![image](./images/page9.png)
-#### ![image](./images/page10.png)
+![image](./images/page1.png)
+![image](./images/page2.png)
+![image](./images/page3.png)
+![image](./images/page4.png)
+![image](./images/page5.png)
+![image](./images/page6.png)
+![image](./images/page7.png)
+![image](./images/page8.png)
+![image](./images/page9.png)
+![image](./images/page10.png)
+
+---
+### ScreenShots
+![image](./images/welcome.png)
+![image](./images/register.png)
+![image](./images/signin.png)
+![image](./images/home.png)
+![image](./images/jobList.png)
+![image](./images/jobDetails.png)
+![image](./images/addJob.png)
+![image](./images/placeList.png)
+![image](./images/placeDetail.png)
+![image](./images/profile.png)
+![image](./images/editProfile.png)
+![image](./images/booking.png)
+![image](./images/complete.png)
 
 ---
 ### **_Future Updates_**
