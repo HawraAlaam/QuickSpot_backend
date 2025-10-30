@@ -37,7 +37,7 @@ QuickSpot is the fast-track platform for Bahrainis who need immediate, short-ter
 
   - VS code
   - trello
-  - googleFonts
+  - tailawesome
 
 ---
 
@@ -72,7 +72,8 @@ QuickSpot is the fast-track platform for Bahrainis who need immediate, short-ter
 ---
 ### **_Future Updates_**
 
-- [ ]
+- [ ] Have business Role
+- [ ] Local Chat
 
 ---
 
@@ -80,6 +81,10 @@ QuickSpot is the fast-track platform for Bahrainis who need immediate, short-ter
 
 [github](https://github.com/SEB-X-Bahrain/class_wiki)
 [w3schools](https://www.w3schools.com/)
+[Bodoorr](https://github.com/Bodoorr)
+[Bodoor](https://github.com/Bodoorr)
+[Zainab](https://github.com/Zeynp62)
+[Michael Lackey](https://github.com/NobodysLackey)
 
 #####
 

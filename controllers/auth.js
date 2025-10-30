@@ -1,7 +1,7 @@
 const User = require("../models/User")
 const middleware = require("../middleware")
 
-const Register = async (req, res) => {
+const Register = async (req, res) =>     {
   try {
     // Extracts the necessary fields from the request body
     const { firstName, lastName, email, password, bio, mobileNumber } = req.body
