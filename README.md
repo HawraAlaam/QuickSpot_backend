@@ -6,6 +6,8 @@
 
 #### GitHub: [balqeesalawi](https://github.com/balqeesalawi) | [HawraAlaam](https://github.com/HawraAlaam) | [MohamedJanahi](https://github.com/Mohamed-Janahi)
 
+##### [Frontend](https://github.com/HawraAlaam/QuickSpot_frontend/)
+
 ---
 
 ### **_Description_**
